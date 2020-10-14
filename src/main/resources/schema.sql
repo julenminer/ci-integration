@@ -1,0 +1,18 @@
+CREATE TABLE IF NOT EXISTS profesor (
+	id INT NOT NULL AUTO_INCREMENT,
+	nombre VARCHAR(100) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS curso (
+	id INT NOT NULL AUTO_INCREMENT,
+	activo BOOLEAN NOT NULL,
+	titulo VARCHAR(100) NOT NULL,
+	id_profesor INT NOT NULL,
+	nivel VARCHAR(30) NOT NULL,
+	horas INT NOT NULL,
+	temarioUrl VARCHAR(500) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_profesor)
+      REFERENCES profesor(id)
+);

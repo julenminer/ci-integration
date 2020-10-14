@@ -1,0 +1,1 @@
+INSERT INTO profesor (nombre) VALUES ('Roberto Canales'),('David Gómez'),('Alberto Moratilla'),('Roberto Aguilera');
