@@ -8,5 +8,7 @@ cache:
 before_cache:
   - rm -rf $HOME/.m2/repository/com/example/reto
 
+dist: trusty
+
 jdk:
   - oraclejdk8
