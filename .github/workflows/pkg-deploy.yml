@@ -9,7 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    name: Docker Build, Tag, Push
+    name: Deploy package
 
     steps:
     - uses: actions/checkout@v2
