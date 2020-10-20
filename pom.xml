@@ -76,4 +76,11 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub julenmienr Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/julenminer/ci-integration</url>
+        </repository>
+    </distributionManagement>
 </project>
