@@ -1,0 +1,19 @@
+# This file wont do us much good in this location, make sure you change the path as directed to continue!
+
+name: Node CD
+
+on:
+  push:
+    branches:
+      - chore/maven-repo-upload
+jobs:
+  Build-and-Publish:
+    runs-on: ubuntu-latest
+    name: Docker Build, Tag, Push
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Deploy
+        uses: actions/setup-java@v1
+        run: mvn deploy
