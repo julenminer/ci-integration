@@ -8,5 +8,7 @@ cache:
 before_cache:
   - rm -rf $HOME/.m2/repository/com/autentia/traviscodacy
 
+dist: trusty
+
 jdk:
   - oraclejdk8
