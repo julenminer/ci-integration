@@ -25,6 +25,15 @@
 
         <jacoco.itreportpath>${project.build.directory}/jacoco</jacoco.itreportpath>
         <jacoco.itreportfile>${jacoco.itreportpath}/jacoco-it.exec</jacoco.itreportfile>
+
+
+        <docker-maven-plugin.version>0.34.1</docker-maven-plugin.version>
+        <it.postgresql.image>postgres:10-alpine</it.postgresql.image>
+        <it.postgresql.host>localhost</it.postgresql.host>
+        <it.postgresql.port>5432</it.postgresql.port>
+        <it.postgresql.db>db</it.postgresql.db>
+        <it.postgresql.password>password</it.postgresql.password>
+
     </properties>
 
     <dependencies>
@@ -164,6 +173,49 @@
                     </execution>
                 </executions>
             </plugin>
+
+
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${docker-maven-plugin.version}</version>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>${it.postgresql.image}</name>
+                            <run>
+                                <ports>
+                                    <port>${it.postgresql.port}:5432</port>
+                                </ports>
+                                <env>
+                                    <POSTGRES_PASSWORD>${it.postgresql.password}</POSTGRES_PASSWORD>
+                                    <POSTGRES_DB>${it.postgresql.db}</POSTGRES_DB>
+                                </env>
+                                <wait>
+                                    <log>database system is ready to accept connections</log>
+                                </wait>
+                            </run>
+                        </image>
+                    </images>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>start</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>start</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>stop</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>stop</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
