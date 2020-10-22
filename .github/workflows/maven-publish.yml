@@ -24,11 +24,22 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
+    - uses: actions/cache@v2
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+    
     - name: Publish to GitHub Packages Apache Maven
       env:
         GITHUB_TOKEN: ${{ github.token }}
         MAVEN_CLI_OPTS: "--batch-mode"
         MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+        # Use Docker in Docker with SSL (https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled)
+        DOCKER_HOST: tcp://docker:2376
+        DOCKER_TLS_CERTDIR: /certs
+        DOCKER_CERT_PATH: /certs/client
+        DOCKER_TLS_VERIFY: 1
+        DOCKER_DRIVER: overlay2
 
       run: mvn $MAVEN_CLI_OPTS clean deploy -Dit.postgresql.host=docker-build
     - uses: actions/upload-artifact@v2
