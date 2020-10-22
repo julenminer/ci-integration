@@ -27,7 +27,7 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       env:
         GITHUB_TOKEN: ${{ github.token }}
-        MAVEN_CLI_OPTS: "-s --batch-mode"
+        MAVEN_CLI_OPTS: "--batch-mode"
         MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
       run: mvn $MAVEN_CLI_OPTS clean deploy -Dit.postgresql.host=docker-build
