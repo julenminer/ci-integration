@@ -8,8 +8,8 @@ on: [push]
 jobs:
   build:
     services:
-      name: docker:dind
-      alias: docker-build
+      docker-build:
+        image: docker:dind
       
     runs-on: ubuntu-latest
     
