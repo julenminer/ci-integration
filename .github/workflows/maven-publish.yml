@@ -31,11 +31,5 @@ jobs:
         MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
         MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
-        # Use Docker in Docker with SSL (https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled)
-        DOCKER_HOST: tcp://docker:2376
-        DOCKER_TLS_CERTDIR: /certs
-        DOCKER_CERT_PATH: /certs/client
-        DOCKER_TLS_VERIFY: 1
-        DOCKER_DRIVER: overlay2
       run: mvn $MAVEN_CLI_OPTS clean deploy -Dit.postgresql.host=docker-build
       
