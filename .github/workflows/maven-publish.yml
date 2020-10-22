@@ -28,7 +28,7 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       env:
         GITHUB_TOKEN: ${{ github.token }}
-        MAVEN_CLI_OPTS: "-s $GITHUB_WORKSPACE/settings.xml --batch-mode"
+        MAVEN_CLI_OPTS: "-s .m2/settings.xml --batch-mode"
         MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
         # Use Docker in Docker with SSL (https://docs.gitlab.com/ee/ci/docker/using_docker_build.html#tls-enabled)
