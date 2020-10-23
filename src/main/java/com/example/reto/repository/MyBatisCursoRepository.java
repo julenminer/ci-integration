@@ -36,12 +36,12 @@ public class MyBatisCursoRepository implements CursoRepository {
                 .stream()
                 .map(curso -> new CursoBuilder()
                         .id((int) curso.get("ID"))
-                        .activo((boolean) curso.get("ACTIVO"))
-                        .titulo((String) curso.get("TITULO"))
-                        .profesor(new Profesor((int) curso.get("ID_PROFESOR"), (String) curso.get("NOMBRE")))
-                        .nivel((String) curso.get("NIVEL"))
-                        .horas((int) curso.get("HORAS"))
-                        .temarioUrl((String) curso.get("TEMARIOURL"))
+                        .active((boolean) curso.get("ACTIVO"))
+                        .title((String) curso.get("TITULO"))
+                        .teacher(new Profesor((int) curso.get("ID_PROFESOR"), (String) curso.get("NOMBRE")))
+                        .level((String) curso.get("NIVEL"))
+                        .hours((int) curso.get("HORAS"))
+                        .syllabusUrl((String) curso.get("TEMARIOURL"))
                         .build())
                 .collect(Collectors.toList());
         //return cursoAccess.selectCursos(new RowBounds(page*rows, rows));

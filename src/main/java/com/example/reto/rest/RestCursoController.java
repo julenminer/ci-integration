@@ -4,9 +4,7 @@ import com.example.reto.model.Curso;
 import com.example.reto.model.CursoBuilder;
 import com.example.reto.model.Profesor;
 import com.example.reto.ports.CursoRepository;
-import com.example.reto.ports.FileStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -37,14 +35,14 @@ public class RestCursoController {
         try {
             boolean activo = payload.containsKey("activo") ? (boolean) payload.get("activo") : false;
             Curso curso = new CursoBuilder()
-                    .activo(activo)
-                    .titulo((String) payload.get("titulo"))
-                    .profesor(new Profesor(
+                    .active(activo)
+                    .title((String) payload.get("titulo"))
+                    .teacher(new Profesor(
                             (int) ((Map<String, Object>) payload.get("profesor")).get("id"),
                             (String) ((Map<String, Object>) payload.get("profesor")).get("nombre")))
-                    .nivel((String) payload.get("nivel"))
-                    .horas((int) payload.get("horas"))
-                    .temarioUrl((String) payload.get("temarioUrl"))
+                    .level((String) payload.get("nivel"))
+                    .hours((int) payload.get("horas"))
+                    .syllabusUrl((String) payload.get("temarioUrl"))
                     .build();
             cursoRepository.addCurso(curso);
         } catch (Exception e) {

@@ -2,21 +2,21 @@ package com.example.reto.model;
 
 public class CursoBuilder {
     private int id;
-    private boolean activo;
-    private String titulo;
-    private Profesor profesor;
-    private String nivel;
-    private int horas;
-    private String temarioUrl;
+    private boolean active;
+    private String title;
+    private Profesor teacher;
+    private String level;
+    private int hours;
+    private String syllabusUrl;
 
     public Curso build() {
         return new Curso(id,
-                activo,
-                titulo,
-                profesor,
-                nivel,
-                horas,
-                temarioUrl);
+                active,
+                title,
+                teacher,
+                level,
+                hours,
+                syllabusUrl);
     }
 
     public CursoBuilder id(int id) {
@@ -24,33 +24,33 @@ public class CursoBuilder {
         return this;
     }
 
-    public CursoBuilder activo(boolean activo) {
-        this.activo = activo;
+    public CursoBuilder active(boolean active) {
+        this.active = active;
         return this;
     }
 
-    public CursoBuilder titulo(String titulo) {
-        this.titulo = titulo;
+    public CursoBuilder title(String title) {
+        this.title = title;
         return this;
     }
 
-    public CursoBuilder profesor(Profesor profesor) {
-        this.profesor = profesor;
+    public CursoBuilder teacher(Profesor teacher) {
+        this.teacher = teacher;
         return this;
     }
 
-    public CursoBuilder nivel(String nivel) {
-        this.nivel = nivel;
+    public CursoBuilder level(String level) {
+        this.level = level;
         return this;
     }
 
-    public CursoBuilder horas(int horas) {
-        this.horas = horas;
+    public CursoBuilder hours(int hours) {
+        this.hours = hours;
         return this;
     }
 
-    public CursoBuilder temarioUrl(String temarioUrl) {
-        this.temarioUrl = temarioUrl;
+    public CursoBuilder syllabusUrl(String syllabusUrl) {
+        this.syllabusUrl = syllabusUrl;
         return this;
     }
 

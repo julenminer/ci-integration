@@ -26,7 +26,6 @@
         <jacoco.itreportpath>${project.build.directory}/jacoco</jacoco.itreportpath>
         <jacoco.itreportfile>${jacoco.itreportpath}/jacoco-it.exec</jacoco.itreportfile>
 
-
         <docker-maven-plugin.version>0.34.1</docker-maven-plugin.version>
         <it.postgresql.image>postgres:10-alpine</it.postgresql.image>
         <it.postgresql.host>localhost</it.postgresql.host>
